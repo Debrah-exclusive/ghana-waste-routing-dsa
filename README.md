@@ -43,6 +43,15 @@ See `docs/ownership.md` for who owns which structure, algorithm, and dataset sli
 5. Add your trace table + explanation to the report.
 6. Commit and push regularly — small commits, clear messages.
 
+## How to Compile & Run Unit Tests
+
+### Command Line (All Platforms - Windows / Mac / Linux)
+
+1. **Compile all Java files into `bin/` directory**:
+   ```bash
+   javac -d bin src/main/java/structures/*.java src/main/java/algorithms/*/*.java src/test/java/structures/*.java src/test/java/algorithms/*/*.java
+
+
 ## Constraints (from the brief)
 - Built-in Java utilities ARE allowed for: file reading, printing, JDBC/DB
   support, plotting export, unit-test scaffolding.

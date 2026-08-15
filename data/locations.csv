@@ -1,1 +1,53 @@
-locationId,name,area,type,latitude,longitude
+location_id,name,area,location_type,x_coord,y_coord
+L001,Balme Library,Legon,Library,5.652,-0.187
+L002,Computer Science Department,Legon,Academic,5.655,-0.184
+L003,UG Hospital,Legon,Health,5.652,-0.178
+L004,Mathematics Department,Legon,Academic,5.654,-0.184
+L005,School of Engineering Science,Legon,Academic,5.656,-0.183
+L006,Legon Hall,Legon,Residential,5.65,-0.188
+L007,School of Pharmacy,Legon,Academic,5.654,-0.189
+L008,Central Cafeteria,Legon,Cafeteria,5.647,-0.187
+L009,Night Market,Legon,Food,5.642,-0.186
+L010,School of Nursing and Midwifery,Legon,Academic,5.658,-0.19
+L011,The Great Hall,Legon,Auditorium,5.651,-0.196
+L012,Public Affairs Directorate,Legon,Administration,5.651,-0.195
+L013,University of Ghana Medical Centre,Legon,Health,5.633,-0.186
+L014,Sarbah Park,Legon,Sports,5.646,-0.189
+L015,Athletic Oval,Legon,Sports and Recreation,5.648,-0.187
+L016,Student Financial Aid Office,Legon,Administration,5.655,-0.188
+L017,Chemistry Department,Legon,Academic,5.653,-0.185
+L018,Law School,Legon,Academic,5.654,-0.183
+L019,Bani Hostel,Legon,Residential,5.663,-0.18
+L020,School of Business,Legon,Academic,5.659,-0.178
+L021,Evandy Hostel,Legon,Residential,5.663,-0.182
+L022,James Top Nelson Yankah Hall (TF Hostel),Legon,Residential,5.667,-0.182
+L023,Cedi Conference Centre,Legon,Auditorium,5.652,-0.188
+L024,University of Ghana Computing Systems,Legon,Academic,5.652,-0.188
+L025,Volta Hall,Legon,Residential,5.652,-0.19
+L026,Commonwealth Hall,Legon,Residential,5.651,-0.191
+L027,Akuafo Hall,Legon,Residential,5.65,-0.186
+L028,Mensah Sarbah Hall,Legon,Residential,5.646,-0.186
+L029,Vikings Hostel,Legon,Residential,5.644,-0.186
+L030,Jubliee hall,Legon,Residential,5.64,-0.186
+L031,International Student Hostel,Legon,Residential,5.64,-0.185
+L032,Jean Nelson Akah Hall,Legon,Residential,5.636,-0.189
+L033,New N Block,Legon,Academic,5.656,-0.188
+L034,Alexander Kwapong Hall,Legon,Residential,5.658,-0.186
+L035,Dr. Hilla Limann Hall,Legon,Residential,5.638,-0.185
+L036,SRC Union,Legon,Administration,5.647,-0.188
+L037,Bush Canteen,Legon,Food,5.648,-0.181
+L038,Sweet Top Bites(Behind the Pentagon Hostel),Legon,Food,5.658,-0.18
+L039,Jones Quartey Building(JQB),Legon,Academic,5.652,-0.182
+L040,GCB Lecture Building,Legon,Academic,5.655,-0.188
+L041,ISSER Conference Hall,Legon,Auditorium,5.656,-0.184
+L042,Sociology Department ,Legon,Academic,5.65,-0.19
+L043,Department of Political Science,Legon,Academic,5.645,-0.186
+L044,Elizabeth Sey Hall,Legon,Residential,5.636,-0.188
+L045,University of Ghana Sports Stadium,Legon,Sports,5.639,-0.18
+L046,International Programmes Office,Legon,Administration,5.654,-0.182
+L047,UG Swimming pool,Legon,Recreation,5.64,-0.182
+L048,Department of Music ,Legon,Academic,5.649,-0.181
+L049,Department of Economics,Legon,Academic,5.651,-0.187
+L050,K.A. Busia Lecture Theatre (KAB),Legon,Academic,5.653,-0.183
+L051,Legon Mosque,Legon,Religious,5.642,-0.185
+L052,Language Centre,Legon,Academic,5.65,-0.189

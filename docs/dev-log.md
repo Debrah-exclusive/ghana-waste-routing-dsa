@@ -34,3 +34,35 @@ their own entries under their name.
   machine.
 - Report section drafted in `report/linked-list-and-sorts.md`.
 - Still to do: export the three graphs listed in §5.4 to `results/graphs/`. 
+
+### Emmanuel Aseda Kow Bentsil — Disjoint Set + Kruskal connectivity trace (2026-08-16)
+- Implemented `structures.DisjointSet<T>`: built from scratch, no built-in
+  collections. Manually-doubling `Object[]` + parallel `int[]` parent/rank/size
+  arrays (same growth pattern as `Graph`'s vertex array), full path compression
+  on `find`, and both union-by-rank and union-by-size attachment (constructor
+  flag) so both are demonstrable live.
+- Wrote 40 self-checking assertions (`DisjointSetTest.java`, no JUnit — plain
+  `main()` + `check`/`checkTrue`/`checkThrows` helpers matching this repo's
+  existing test style): normal (21), boundary (14), invalid input (5). All
+  passing.
+- Added `demo.DisjointSetKruskalTrace` as the connectivity-trace evidence for
+  this module: loads a Roads CSV, sorts by weight, runs Kruskal's
+  cycle-detection logic against `DisjointSet`, prints and exports the full
+  step-by-step accept/reject trace. Auto-detects both the official
+  `db/seed/roads.csv` column format and the raw `data/roads.csv` format.
+- Ran it against the 104-row `data/roads.csv` / 52-row `data/locations.csv`
+  already in the repo (real UG Legon campus data): 51 accepted, 53 rejected
+  as cycles, final component count 1 (fully connected). Full trace exported
+  to `results/csv/aseda_disjoint_set_kruskal_trace.csv`.
+- **Flagging for the team:** `data/roads.csv`/`data/locations.csv` already
+  contain a full real dataset (52 locations, 104 roads — past the 50/100
+  minimums) but haven't been confirmed as official or copied into
+  `db/seed/` in the agreed column format yet. Need Elsie (co-owner of the
+  Roads dataset) and whoever added these files to confirm before we treat
+  them as final, since `db/seed/roads.csv` uses different column names and
+  drops the `road_id` column.
+- Report section drafted in `report/aseda_bentsil_disjoint_set.md`.
+- Still to do: get the dataset provenance confirmed (see above), then log
+  ≥30 `algorithm_runs` rows once the DB loader is live, and confirm the
+  Kruskal weight formula with Adam (Prim's/Kruskal's MST module) so both
+  agree on the same edge-cost calculation.

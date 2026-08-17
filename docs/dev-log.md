@@ -8,6 +8,12 @@ their own entries under their name.
 
 ## Week 2
 
+### Able Mwintuma Gambo - Deque + Service Requests (2026-08-17)
+- Implemented a generic circular-array deque with front/rear add, remove and peek operations.
+- Added normal, boundary and invalid-input tests, including wrap-around and resizing.
+- Added service-request records SR101-SR200 and an urgent-request insertion demo.
+- Drafted the module report and live-defense notes in `report/deque-and-service-requests.md`.
+
 ### Emmanuel Thisara Otoo — Linked List + Selection/Insertion Sort (2026-08-12)
 - Implemented `structures.MyLinkedList`: doubly linked, built from scratch, no
   built-in collections. Head/tail pointers, `O(min(i, n-i))` index walk, in-place

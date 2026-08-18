@@ -1,0 +1,45 @@
+Schema created: locations, roads, service_requests, resources, algorithm_runs, audit_events
+
+--- Loading locations ---
+[locations] loaded=52 failed=0
+
+--- Loading roads ---
+[roads] loaded=104 failed=0
+
+--- Loading service_requests ---
+[service_requests] loaded=309 failed=0
+
+--- Loading resources ---
+[resources] loaded=30 failed=0
+
+--- Evidence ---
+locations = 52
+roads = 104
+service_requests = 309
+resources = 30
+
+[PASS] valid service request loads successfully
+[PASS] valid resource CSV loads successfully
+
+-- boundary cases --
+[PASS] empty CSV (header only) loads 0 rows without error
+[PASS] single-record CSV loads exactly 1 row
+[PASS] duplicate request_id: first row loads, second rejected
+[PASS] boundary urgency values 1 and 5 both accepted
+[PASS] boundary status values NEW and CANCELLED both accepted
+[PASS] road with distance_km=0 (duplicate-coordinate pair) is accepted
+
+-- invalid cases --
+[PASS] resource with missing resource_type field is rejected
+[PASS] service request referencing nonexistent location (L999) is rejected
+[PASS] road with negative distance_km is rejected
+[PASS] resource with zero/non-positive capacity is rejected
+[PASS] malformed time_submitted (wrong format) is rejected
+[PASS] invalid category value ('Plumbing') is rejected
+[PASS] invalid status value ('DONE') is rejected
+[PASS] source_location_id == destination_location_id is rejected
+[PASS] deadline earlier than time_submitted is rejected
+
+============================================
+RESULTS: 19 passed, 0 failed
+===========================================

@@ -1,1 +1,31 @@
-resourceId,type,homeLocation,capacity,availabilityStatus
+resource_id,resource_type,home_location_id,capacity,availability_status
+V001,Van,L003,4,AVAILABLE
+R001,Rider,L002,1,AVAILABLE
+RT01,Recycling Truck,L045,6.6,AVAILABLE
+CT01,Compactor Truck,L014,14.3,BUSY
+WC01,Waste Container,L008,1.3,AVAILABLE
+RT02,Recycling Truck,L045,9.4,UNAVAILABLE
+CT02,Compactor Truck,L016,14.6,AVAILABLE
+WT01,Waste Collection Truck,L045,8.9,AVAILABLE
+SC01,Sanitation Crew,L009,3.8,AVAILABLE
+WT02,Waste Collection Truck,L045,11.0,AVAILABLE
+WT03,Waste Collection Truck,L036,9.3,AVAILABLE
+SC02,Sanitation Crew,L011,1.3,BUSY
+RT03,Recycling Truck,L014,5.3,AVAILABLE
+RT04,Recycling Truck,L014,4.2,BUSY
+WT04,Waste Collection Truck,L036,6.0,MAINTENANCE
+SC03,Sanitation Crew,L014,3.7,AVAILABLE
+SC04,Sanitation Crew,L033,3.3,AVAILABLE
+CT03,Compactor Truck,L016,12.4,MAINTENANCE
+SC05,Sanitation Crew,L039,1.4,AVAILABLE
+RT05,Recycling Truck,L012,6.6,AVAILABLE
+WT05,Waste Collection Truck,L036,6.7,MAINTENANCE
+CT04,Compactor Truck,L012,8.1,BUSY
+WT06,Waste Collection Truck,L012,11.9,AVAILABLE
+CT05,Compactor Truck,L008,10.5,AVAILABLE
+WT07,Waste Collection Truck,L008,8.9,BUSY
+RT06,Recycling Truck,L045,6.9,AVAILABLE
+WT08,Waste Collection Truck,L009,12.0,MAINTENANCE
+SV01,Support Vehicle,L045,4.1,AVAILABLE
+WT09,Waste Collection Truck,L016,5.0,AVAILABLE
+WT10,Waste Collection Truck,L008,7.5,AVAILABLE

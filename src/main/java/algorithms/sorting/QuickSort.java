@@ -1,3 +1,7 @@
+package algorithms.sorting;
+
+import algorithms.greedy.GreedyAssignment.ServiceRequest;
+
 public class QuickSort {
 
     public static void sortByUrgency(ServiceRequest[] array) {
@@ -14,11 +18,11 @@ public class QuickSort {
     }
 
     private static int partition(ServiceRequest[] array, int low, int high) {
-        int pivot = array[high].getUrgency();
+        int pivot = array[high].urgency;
         int i = low - 1;
 
         for (int j = low; j < high; j++) {
-            if (array[j].getUrgency() >= pivot) {
+            if (array[j].urgency >= pivot) {
                 i++;
                 swap(array, i, j);
             }

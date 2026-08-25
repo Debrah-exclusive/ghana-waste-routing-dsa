@@ -1,3 +1,7 @@
+package algorithms.sorting;
+
+import algorithms.greedy.GreedyAssignment.ServiceRequest;
+
 public class MergeSort {
 
     public static void sortByUrgency(ServiceRequest[] array) {
@@ -25,7 +29,7 @@ public class MergeSort {
         int k = left;
 
         while (i <= mid && j <= right) {
-            if (temp[i].getUrgency() >= temp[j].getUrgency()) {
+            if (temp[i].urgency >= temp[j].urgency) {
                 array[k] = temp[i];
                 i++;
             } else {

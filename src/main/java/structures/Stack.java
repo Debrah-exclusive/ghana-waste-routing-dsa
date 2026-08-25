@@ -1,3 +1,7 @@
+package structures;
+
+import algorithms.greedy.GreedyAssignment.ServiceRequest;
+
 public class Stack {
 
     private ServiceRequest[] data;   // we will store ServiceRequests

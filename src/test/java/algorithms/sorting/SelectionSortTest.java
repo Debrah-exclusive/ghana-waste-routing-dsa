@@ -1,3 +1,5 @@
+package algorithms.sorting;
+
 import algorithms.sorting.SelectionSort;
 import algorithms.sorting.SortMetrics;
 import structures.MyLinkedList;

@@ -49,11 +49,14 @@ CREATE TABLE service_requests (
     CONSTRAINT chk_endpoints CHECK (source_location_id <> destination_location_id),
     CONSTRAINT chk_deadline  CHECK (deadline > time_submitted),
     CONSTRAINT chk_status    CHECK (status IN
-        ('NEW', 'ASSIGNED', 'IN_PROGRESS', 'COMPLETED', 'CANCELLED')),
+        ('NEW', 'PENDING', 'ASSIGNED', 'IN_PROGRESS', 'COMPLETED', 'CANCELLED')),
     CONSTRAINT chk_category  CHECK (category IN
         ('Medical', 'Security', 'Utility', 'Maintenance', 'IT Support',
          'Document', 'Lab Equipment', 'Library', 'Catering', 'Cleaning',
-         'Event Setup', 'Transport'))
+         'Event Setup', 'Transport', 'HOUSEHOLD_WASTE', 'ILLEGAL_DUMP_CLEARANCE',
+         'DRAIN_CLEARING', 'SEPTIC_EMPTYING', 'SKIP_OVERFLOW', 'PUBLIC_TOILET_SERVICE',
+         'MARKET_WASTE', 'BULK_REFUSE', 'STREET_SWEEPING', 'general_waste', 'recycling',
+         'drain_cleaning', 'sanitation', 'hazardous_waste'))
 );
 
 CREATE INDEX idx_sr_status         ON service_requests (status);

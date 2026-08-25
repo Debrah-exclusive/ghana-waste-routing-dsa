@@ -1,3 +1,5 @@
+package db;
+
 import db.DatabaseLoader;
 
 import java.nio.file.Files;

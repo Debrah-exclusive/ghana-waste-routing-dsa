@@ -13,14 +13,14 @@ Taken in arrival order from `data/service_requests.csv`.
 
 | Label | requestId | source | destination | category | urgency | timeSubmitted |
 |---|---|---|---|---|---|---|
-| R1 | 1 | 16 | 46 | ILLEGAL_DUMP_CLEARANCE | MEDIUM | 2026-06-08T05:05 |
-| R2 | 2 | 5 | 46 | HOUSEHOLD_WASTE | LOW | 2026-06-08T05:56 |
-| R3 | 3 | 32 | 49 | ILLEGAL_DUMP_CLEARANCE | HIGH | 2026-06-08T06:41 |
-| R4 | 4 | 4 | 46 | HOUSEHOLD_WASTE | MEDIUM | 2026-06-08T07:24 |
-| R5 | 5 | 45 | 48 | HOUSEHOLD_WASTE | MEDIUM | 2026-06-08T08:09 |
-| R6 | 6 | 34 | 49 | ILLEGAL_DUMP_CLEARANCE | LOW | 2026-06-08T08:20 |
-| R7 | 7 | 42 | 48 | SKIP_OVERFLOW | HIGH | 2026-06-08T08:41 |
-| R8 | 8 | 39 | 50 | DRAIN_CLEARING | MEDIUM | 2026-06-08T09:06 |
+| RSR001 | SR001 | L016 | L046 | ILLEGAL_DUMP_CLEARANCE | MEDIUM | 2026-06-08T05:05:00Z |
+| RSR002 | SR002 | L005 | L046 | HOUSEHOLD_WASTE | LOW | 2026-06-08T05:56:00Z |
+| RSR003 | SR003 | L032 | L049 | ILLEGAL_DUMP_CLEARANCE | HIGH | 2026-06-08T06:41:00Z |
+| RSR004 | SR004 | L004 | L046 | HOUSEHOLD_WASTE | MEDIUM | 2026-06-08T07:24:00Z |
+| RSR005 | SR005 | L045 | L048 | HOUSEHOLD_WASTE | MEDIUM | 2026-06-08T08:09:00Z |
+| RSR006 | SR006 | L034 | L049 | ILLEGAL_DUMP_CLEARANCE | LOW | 2026-06-08T08:20:00Z |
+| RSR007 | SR007 | L042 | L048 | SKIP_OVERFLOW | HIGH | 2026-06-08T08:41:00Z |
+| RSR008 | SR008 | L039 | L050 | DRAIN_CLEARING | MEDIUM | 2026-06-08T09:06:00Z |
 
 ## Trace
 
@@ -30,22 +30,22 @@ Taken in arrival order from `data/service_requests.csv`.
 | Step | Operation | Result | front | rear | size | Backing array | Queue (front → rear) | What moved |
 |---|---|---|---|---|---|---|---|---|
 | 0 | `initialise` | queue created | 0 | 4 | 0 | `[ --   --   --   --   -- ]` | (empty) | empty ring, rear parked one slot behind front |
-| 1 | `enqueue(R1)` | accepted R1 | 0 | 0 | 1 | `[>R1<  --   --   --   -- ]` | R1 | rear steps forward one slot |
-| 2 | `enqueue(R2)` | accepted R2 | 0 | 1 | 2 | `[>R1   R2<  --   --   -- ]` | R1 R2 | rear steps forward one slot |
-| 3 | `enqueue(R3)` | accepted R3 | 0 | 2 | 3 | `[>R1   R2   R3<  --   -- ]` | R1 R2 R3 | rear steps forward one slot |
-| 4 | `enqueue(R4)` | accepted R4 | 0 | 3 | 4 | `[>R1   R2   R3   R4<  -- ]` | R1 R2 R3 R4 | rear steps forward one slot |
-| 5 | `enqueue(R5)` | accepted R5 | 0 | 4 | 5 | `[>R1   R2   R3   R4   R5<]` | R1 R2 R3 R4 R5 | queue is now full |
-| 6 | `enqueue(R6)` | REJECTED R6 (overflow) | 0 | 4 | 5 | `[>R1   R2   R3   R4   R5<]` | R1 R2 R3 R4 R5 | rejected: no free slot, front and rear both hold still |
-| 7 | `dequeue()` | served R1 | 1 | 4 | 4 | `[ --  >R2   R3   R4   R5<]` | R2 R3 R4 R5 | front steps forward, slot 0 is now free |
-| 8 | `dequeue()` | served R2 | 2 | 4 | 3 | `[ --   --  >R3   R4   R5<]` | R3 R4 R5 | front steps forward, slot 1 is now free |
-| 9 | `enqueue(R6)` | accepted R6 | 2 | 0 | 4 | `[ R6<  --  >R3   R4   R5 ]` | R3 R4 R5 R6 | WRAP: rear moves from slot 4 to slot 0 and reuses it |
-| 10 | `enqueue(R7)` | accepted R7 | 2 | 1 | 5 | `[ R6   R7< >R3   R4   R5 ]` | R3 R4 R5 R6 R7 | rear continues into slot 1, queue is full again |
-| 11 | `enqueue(R8)` | REJECTED R8 (overflow) | 2 | 1 | 5 | `[ R6   R7< >R3   R4   R5 ]` | R3 R4 R5 R6 R7 | rejected: full again even though rear is behind front |
-| 12 | `dequeue()` | served R3 | 3 | 1 | 4 | `[ R6   R7<  --  >R4   R5 ]` | R4 R5 R6 R7 | front steps forward |
-| 13 | `dequeue()` | served R4 | 4 | 1 | 3 | `[ R6   R7<  --   --  >R5 ]` | R5 R6 R7 | front steps forward |
-| 14 | `dequeue()` | served R5 | 0 | 1 | 2 | `[>R6   R7<  --   --   -- ]` | R6 R7 | WRAP: front moves from slot 4 to slot 0 |
-| 15 | `dequeue()` | served R6 | 1 | 1 | 1 | `[ --  >R7<  --   --   -- ]` | R7 | front steps forward |
-| 16 | `dequeue()` | served R7 | 2 | 1 | 0 | `[ --   --   --   --   -- ]` | (empty) | last request served, queue is empty again |
+| 1 | `enqueue(RSR001)` | accepted RSR001 | 0 | 0 | 1 | `[>RSR001<  --   --   --   -- ]` | RSR001 | rear steps forward one slot |
+| 2 | `enqueue(RSR002)` | accepted RSR002 | 0 | 1 | 2 | `[>RSR001   RSR002<  --   --   -- ]` | RSR001 RSR002 | rear steps forward one slot |
+| 3 | `enqueue(RSR003)` | accepted RSR003 | 0 | 2 | 3 | `[>RSR001   RSR002   RSR003<  --   -- ]` | RSR001 RSR002 RSR003 | rear steps forward one slot |
+| 4 | `enqueue(RSR004)` | accepted RSR004 | 0 | 3 | 4 | `[>RSR001   RSR002   RSR003   RSR004<  -- ]` | RSR001 RSR002 RSR003 RSR004 | rear steps forward one slot |
+| 5 | `enqueue(RSR005)` | accepted RSR005 | 0 | 4 | 5 | `[>RSR001   RSR002   RSR003   RSR004   RSR005<]` | RSR001 RSR002 RSR003 RSR004 RSR005 | queue is now full |
+| 6 | `enqueue(RSR006)` | REJECTED RSR006 (overflow) | 0 | 4 | 5 | `[>RSR001   RSR002   RSR003   RSR004   RSR005<]` | RSR001 RSR002 RSR003 RSR004 RSR005 | rejected: no free slot, front and rear both hold still |
+| 7 | `dequeue()` | served RSR001 | 1 | 4 | 4 | `[ --  >RSR002   RSR003   RSR004   RSR005<]` | RSR002 RSR003 RSR004 RSR005 | front steps forward, slot 0 is now free |
+| 8 | `dequeue()` | served RSR002 | 2 | 4 | 3 | `[ --   --  >RSR003   RSR004   RSR005<]` | RSR003 RSR004 RSR005 | front steps forward, slot 1 is now free |
+| 9 | `enqueue(RSR006)` | accepted RSR006 | 2 | 0 | 4 | `[ RSR006<  --  >RSR003   RSR004   RSR005 ]` | RSR003 RSR004 RSR005 RSR006 | WRAP: rear moves from slot 4 to slot 0 and reuses it |
+| 10 | `enqueue(RSR007)` | accepted RSR007 | 2 | 1 | 5 | `[ RSR006   RSR007< >RSR003   RSR004   RSR005 ]` | RSR003 RSR004 RSR005 RSR006 RSR007 | rear continues into slot 1, queue is full again |
+| 11 | `enqueue(RSR008)` | REJECTED RSR008 (overflow) | 2 | 1 | 5 | `[ RSR006   RSR007< >RSR003   RSR004   RSR005 ]` | RSR003 RSR004 RSR005 RSR006 RSR007 | rejected: full again even though rear is behind front |
+| 12 | `dequeue()` | served RSR003 | 3 | 1 | 4 | `[ RSR006   RSR007<  --  >RSR004   RSR005 ]` | RSR004 RSR005 RSR006 RSR007 | front steps forward |
+| 13 | `dequeue()` | served RSR004 | 4 | 1 | 3 | `[ RSR006   RSR007<  --   --  >RSR005 ]` | RSR005 RSR006 RSR007 | front steps forward |
+| 14 | `dequeue()` | served RSR005 | 0 | 1 | 2 | `[>RSR006   RSR007<  --   --   -- ]` | RSR006 RSR007 | WRAP: front moves from slot 4 to slot 0 |
+| 15 | `dequeue()` | served RSR006 | 1 | 1 | 1 | `[ --  >RSR007<  --   --   -- ]` | RSR007 | front steps forward |
+| 16 | `dequeue()` | served RSR007 | 2 | 1 | 0 | `[ --   --   --   --   -- ]` | (empty) | last request served, queue is empty again |
 | 17 | `dequeue()` | REJECTED (underflow) | 2 | 1 | 0 | `[ --   --   --   --   -- ]` | (empty) | rejected: nothing to serve, indices hold still |
 
 ## Counters after the trace
@@ -68,17 +68,17 @@ unreachable slots.
 | Step | Operation | Non-circular queue state |
 |---|---|---|
 | 0 | `initialise` | front=0 rear=0 held=0 wasted=0  accepting |
-| 1 | `enqueue(R1)` | front=0 rear=1 held=1 wasted=0  accepting |
-| 2 | `enqueue(R2)` | front=0 rear=2 held=2 wasted=0  accepting |
-| 3 | `enqueue(R3)` | front=0 rear=3 held=3 wasted=0  accepting |
-| 4 | `enqueue(R4)` | front=0 rear=4 held=4 wasted=0  accepting |
-| 5 | `enqueue(R5)` | front=0 rear=5 held=5 wasted=0  FULL (genuinely) |
-| 6 | `enqueue(R6)` | front=0 rear=5 held=5 wasted=0  FULL (genuinely) |
+| 1 | `enqueue(RSR001)` | front=0 rear=1 held=1 wasted=0  accepting |
+| 2 | `enqueue(RSR002)` | front=0 rear=2 held=2 wasted=0  accepting |
+| 3 | `enqueue(RSR003)` | front=0 rear=3 held=3 wasted=0  accepting |
+| 4 | `enqueue(RSR004)` | front=0 rear=4 held=4 wasted=0  accepting |
+| 5 | `enqueue(RSR005)` | front=0 rear=5 held=5 wasted=0  FULL (genuinely) |
+| 6 | `enqueue(RSR006)` | front=0 rear=5 held=5 wasted=0  FULL (genuinely) |
 | 7 | `dequeue()` | front=1 rear=5 held=4 wasted=1  FULL - FALSE OVERFLOW |
 | 8 | `dequeue()` | front=2 rear=5 held=3 wasted=2  FULL - FALSE OVERFLOW |
-| 9 | `enqueue(R6)` | front=2 rear=5 held=3 wasted=2  FULL - FALSE OVERFLOW |
-| 10 | `enqueue(R7)` | front=2 rear=5 held=3 wasted=2  FULL - FALSE OVERFLOW |
-| 11 | `enqueue(R8)` | front=2 rear=5 held=3 wasted=2  FULL - FALSE OVERFLOW |
+| 9 | `enqueue(RSR006)` | front=2 rear=5 held=3 wasted=2  FULL - FALSE OVERFLOW |
+| 10 | `enqueue(RSR007)` | front=2 rear=5 held=3 wasted=2  FULL - FALSE OVERFLOW |
+| 11 | `enqueue(RSR008)` | front=2 rear=5 held=3 wasted=2  FULL - FALSE OVERFLOW |
 | 12 | `dequeue()` | front=3 rear=5 held=2 wasted=3  FULL - FALSE OVERFLOW |
 | 13 | `dequeue()` | front=4 rear=5 held=1 wasted=4  FULL - FALSE OVERFLOW |
 | 14 | `dequeue()` | front=5 rear=5 held=0 wasted=5  EXHAUSTED - empty yet cannot accept |

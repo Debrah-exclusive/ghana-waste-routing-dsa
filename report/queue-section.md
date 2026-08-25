@@ -188,7 +188,7 @@ Step 10 of the trace, where this has happened:
                rear = 1   front = 2
 
    logical order:  R3 -> R4 -> R5 -> R6 -> R7
-   invariant:      rear == (2 + 5 - 1) mod 5 == 6 mod 5 == 1   ✓
+   invariant:      rear == (2 + 5 - 1) mod 5 == 6 mod 5 == 1   
 ```
 
 `rear` is *numerically behind* `front` here, and that is perfectly legal. Any
@@ -506,7 +506,7 @@ O(n) per dequeue, O(n²) to drain the queue.
 Step 9 of `report/queue-trace.md`: `rear` moves 4 → 0 with `front` at 2, so the
 contents are physically split (`[R6 -- R3 R4 R5]`) while the logical order stays
 `R3 R4 R5 R6`. The invariant still holds at that step:
-`rear == (front + size - 1) mod capacity == (2 + 4 - 1) mod 5 == 0`. ✓
+`rear == (front + size - 1) mod capacity == (2 + 4 - 1) mod 5 == 0`. 
 
 **What happens when it overflows?**
 `enqueue` throws `IllegalStateException`; `offer` returns `false`. Either way the

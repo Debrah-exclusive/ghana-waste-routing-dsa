@@ -196,9 +196,14 @@ public class DatabaseLoader {
         String sql = "INSERT INTO service_requests (request_id, source_location_id, destination_location_id, " +
                 "category, urgency, time_submitted, deadline, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
-        Set<String> validCategories = Set.of("Medical", "Security", "Utility", "Maintenance", "IT Support",
-                "Document", "Lab Equipment", "Library", "Catering", "Cleaning", "Event Setup", "Transport");
-        Set<String> validStatuses = Set.of("NEW", "ASSIGNED", "IN_PROGRESS", "COMPLETED", "CANCELLED");
+        Set<String> validCategories = Set.of(
+                "Medical", "Security", "Utility", "Maintenance", "IT Support",
+                "Document", "Lab Equipment", "Library", "Catering", "Cleaning", "Event Setup", "Transport",
+                "HOUSEHOLD_WASTE", "ILLEGAL_DUMP_CLEARANCE", "DRAIN_CLEARING", "SEPTIC_EMPTYING",
+                "SKIP_OVERFLOW", "PUBLIC_TOILET_SERVICE", "MARKET_WASTE", "BULK_REFUSE", "STREET_SWEEPING",
+                "general_waste", "recycling", "drain_cleaning", "sanitation", "hazardous_waste"
+        );
+        Set<String> validStatuses = Set.of("NEW", "PENDING", "ASSIGNED", "IN_PROGRESS", "COMPLETED", "CANCELLED");
 
         Set<String> seenIds = new HashSet<>();
         Set<String> knownLocations = loadKnownLocationIds();
@@ -236,7 +241,14 @@ public class DatabaseLoader {
                     if (!validCategories.contains(category)) {
                         throw new ValidationException("invalid category: " + category);
                     }
-                    int urgency = parseInt(f[4], "urgency");
+                    int urgency;
+                    String urgStr = f[4].trim();
+                    if (urgStr.equalsIgnoreCase("LOW")) urgency = 1;
+                    else if (urgStr.equalsIgnoreCase("MEDIUM")) urgency = 3;
+                    else if (urgStr.equalsIgnoreCase("HIGH")) urgency = 4;
+                    else if (urgStr.equalsIgnoreCase("CRITICAL") || urgStr.equalsIgnoreCase("URGENT")) urgency = 5;
+                    else urgency = parseInt(f[4], "urgency");
+
                     if (urgency < 1 || urgency > 5) {
                         throw new ValidationException("urgency out of range 1-5: " + urgency);
                     }
@@ -366,11 +378,22 @@ public class DatabaseLoader {
         }
     }
 
-    private LocalDateTime parseTimestamp(String value, String fieldName) throws ValidationException {
+    private static LocalDateTime parseTimestamp(String raw, String fieldName) throws ValidationException {
+        if (raw == null || raw.isBlank()) {
+            throw new ValidationException(fieldName + " cannot be blank");
+        }
+        String s = raw.trim();
         try {
-            return LocalDateTime.parse(value.trim(), ISO_MIN);
+            if (s.endsWith("Z")) {
+                return java.time.Instant.parse(s).atZone(java.time.ZoneId.of("UTC")).toLocalDateTime();
+            }
+            return LocalDateTime.parse(s, ISO_MIN);
         } catch (DateTimeParseException e) {
-            throw new ValidationException("malformed timestamp for " + fieldName + ": " + value);
+            try {
+                return LocalDateTime.parse(s);
+            } catch (DateTimeParseException e2) {
+                throw new ValidationException("malformed timestamp for " + fieldName + ": " + raw);
+            }
         }
     }
 

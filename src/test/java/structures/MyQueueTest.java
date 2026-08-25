@@ -1,3 +1,5 @@
+package structures;
+
 import structures.MyQueue;
 
 /**

@@ -17,3 +17,13 @@ can edit simultaneously. Follow the structure in Section 11 of the project brief
 12. References and appendices
 
 Export the final version to both PDF and DOCX before submission.
+
+---
+
+## Individual Defense Reports
+
+- [Sadiq Moro Ayariga — BST, BFS & DFS](file:///c:/Users/derri/Downloads/ghana-waste-routing-dsa/ghana-waste-routing-dsa/report/sadiq_ayariga_bst_bfs_dfs.md)
+- [Adam Mohammed — Red-Black Tree, Prim & Kruskal MST](file:///c:/Users/derri/Downloads/ghana-waste-routing-dsa/ghana-waste-routing-dsa/report/adam_mohammed_rbt_mst.md)
+- [Thelma Osei-Fiagbor — B-Tree, Knapsack DP](file:///c:/Users/derri/Downloads/ghana-waste-routing-dsa/ghana-waste-routing-dsa/report/thelma_osei_fiagbor_btree_dp.md)
+- [Desmond Kimi Bilabia — Hash Table, Collision Statistics](file:///c:/Users/derri/Downloads/ghana-waste-routing-dsa/ghana-waste-routing-dsa/report/desmond_bilabia_hashtable.md)
+- [Kelvin Amaah Mankata — Set / Map ADTs, Location Lookup](file:///c:/Users/derri/Downloads/ghana-waste-routing-dsa/ghana-waste-routing-dsa/report/kelvin_mankata_set_map.md)

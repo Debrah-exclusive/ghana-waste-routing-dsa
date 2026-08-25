@@ -1,4 +1,5 @@
 import structures.QueueCircular;
+package structures;
 
 /**
  * Unit tests for QueueCircular — normal case, boundary case, invalid input case.

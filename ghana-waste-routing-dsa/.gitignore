@@ -1,0 +1,22 @@
+# Build output
+*.class
+target/
+build/
+out/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local DB files
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+*.log
